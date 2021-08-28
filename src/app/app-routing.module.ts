@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'details',
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+  },
+  {
+    path: 'displaytask',
+    loadChildren: () => import('./displaytask/displaytask.module').then( m => m.DisplaytaskPageModule)
+  },
+  {
+    path: 'taskdetails',
+    loadChildren: () => import('./taskdetails/taskdetails.module').then( m => m.TaskdetailsPageModule)
+  },
 ];
 
 @NgModule({

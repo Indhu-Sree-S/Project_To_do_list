@@ -1,20 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header translucent="true">
+  <ion-toolbar color="danger">
+    <ion-title class="ion-text-center" size="large">To Do List</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <!-- fab placed to the top end -->
+  <ion-fab size="large"vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="newproject()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card *ngIf="service.flag">
+    <ion-card-content>
+      <ion-card type="button" (click)="viewprojecttask()">
+        <div class="aligncard">
+        <ion-card-title class="ion-text-left"> <strong>{{ service.data.pname }}</strong>
+        <ion-checkbox class="checksize" [checked]="service.data.status"></ion-checkbox></ion-card-title>
+        <ion-card-subtitle class="ion-text-center">Start Date : {{ service.data.startdate | date}}</ion-card-subtitle>
+        <ion-card-subtitle class="ion-text-center">Due Date : {{ service.data.enddate | date}}</ion-card-subtitle>
+        <ion-text size= "small">Notes: {{ service.data.notes }}</ion-text>
+      </div>
+    </ion-card>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

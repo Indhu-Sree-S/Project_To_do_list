@@ -1,0 +1,67 @@
+<ion-header translucent="true">
+  <ion-toolbar color="danger">
+    <ion-title class="ion-text-center" size="large">To Do List</ion-title>
+    <ion-icon size="large"name="close-outline" slot="end" (click)="cancel()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #submitform = "ngForm" (ngSubmit)="taskdetails(submitform)">
+    <ion-card class="content">
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>
+          <strong>Create New Task</strong>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="content1">
+
+        <ion-item>
+          <ion-label color="dark" position="floating">Task Name</ion-label>
+          <ion-input minlength=2 type="string" [(ngModel)]="taskdata.tname" #tnameCtrl="ngModel" name="tname" required></ion-input>
+        </ion-item>
+        <div *ngIf="!tnameCtrl.valid && tnameCtrl.touched">
+          <ion-text color="danger">Task Name is required</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label color="dark" position="floating">Start Date </ion-label>
+          <ion-datetime display-format="DD-MM-YYYY" [max]="service.data.enddate"[min]="service.data.startdate"[(ngModel)]="taskdata.tstartdate" #tstartdateCtrl="ngModel" name="tstartdate" required></ion-datetime>
+        </ion-item>
+        <div *ngIf="!tstartdateCtrl.valid && tstartdateCtrl.touched">
+          <ion-text color="danger">Task starting date is required</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label color="dark" position="floating">End Date </ion-label>
+          <ion-datetime display-format="DD-MM-YYYY" [max]= "service.data.enddate" [min]="this.taskdata.tstartdate" [(ngModel)]="taskdata.tenddate" #tenddateCtrl="ngModel" name="tenddate" required></ion-datetime>
+        </ion-item>
+        <div *ngIf="!tenddateCtrl.valid && tenddateCtrl.touched">
+          <ion-text color="danger">Task ending date is required</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label color="dark" position="floating">Complexity Level</ion-label>
+          <ion-select type="string"[(ngModel)]="taskdata.tcomplexity" #tcomplexityCtrl="ngModel" name="tcomplexity" required>
+            <ion-select-option value= "Low">Low</ion-select-option>
+            <ion-select-option value= "Medium">Medium</ion-select-option>
+            <ion-select-option value= "High">High</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="!tcomplexityCtrl.valid && tcomplexityCtrl.touched">
+          <ion-text color="danger">Complexity Level is required</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label color="dark" position="floating">Notes </ion-label>
+          <ion-textarea placeholder="Note (options)" type="string" [(ngModel)]="taskdata.tnotes" #tnotesCtrl="ngModel" name="tnotes"></ion-textarea>
+        </ion-item>
+
+
+        <ion-button class="submit"color="danger" type="submit" [disabled]="!submitform.form.valid">
+          Submit
+       </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+
+</ion-content>

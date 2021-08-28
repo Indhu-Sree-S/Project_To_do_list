@@ -1,0 +1,32 @@
+<ion-header translucent="true">
+  <ion-toolbar color="danger">
+    <ion-icon size="large" name="chevron-back-outline" slot="start" (click)="home()"></ion-icon>
+    <ion-title class="ion-text-center" size="large">To Do List</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- fab placed to the top end -->
+  <ion-fab size="large"vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="newtask()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center"><strong>{{ service.data.pname }}</strong></ion-card-title>
+      <ion-card-subtitle size="small"class="ion-text-center">Tasks - {{ service.data.tasks }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content *ngIf="service.tflag">
+      <ion-card>
+        <div class="aligncard">
+        <ion-card-title class="ion-text-left"> <strong>{{ service.taskdata.tname }}</strong>
+        <ion-checkbox class="checksize" [checked]="service.taskdata.tstatus" (ionchange)="checkbox($event)"></ion-checkbox></ion-card-title>
+        <ion-card-subtitle class="ion-text-center">Start Date : {{ service.taskdata.tstartdate | date}}</ion-card-subtitle>
+        <ion-card-subtitle class="ion-text-center">Due Date : {{ service.taskdata.tenddate | date}}</ion-card-subtitle>
+        <ion-card-subtitle class="ion-text-center">Complexity Level : {{ service.taskdata.tcomplexity }}</ion-card-subtitle>
+        <ion-text size= "small">Notes: {{ service.taskdata.tnotes }}</ion-text>
+      </div>
+    </ion-card>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

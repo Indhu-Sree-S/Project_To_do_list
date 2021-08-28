@@ -1,0 +1,55 @@
+<ion-header translucent="true">
+  <ion-toolbar color="danger">
+    <ion-title class="ion-text-center" size="large">To Do List</ion-title>
+    <ion-icon size="large" name="close-outline" slot="end" (click)="cancel()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #submitform = "ngForm" (ngSubmit)="details(submitform)">
+    <ion-card class="content">
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>
+          <strong>Create New Project</strong>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="content1">
+
+        <ion-item>
+          <ion-label color="dark" position="floating">Project Name</ion-label>
+          <ion-input minlength=2 type="string" [(ngModel)]="data.pname" #pnameCtrl="ngModel" name="pname" required></ion-input>
+        </ion-item>
+        <div *ngIf="!pnameCtrl.valid && pnameCtrl.touched">
+          <ion-text color="danger">Project Name is required</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label color="dark" position="floating">Start Date </ion-label>
+          <ion-datetime display-format="DD-MM-YYYY" max= "2035"min="2000"[(ngModel)]="data.startdate" #startdateCtrl="ngModel" name="startdate" required></ion-datetime>
+        </ion-item>
+        <div *ngIf="!startdateCtrl.valid && startdateCtrl.touched">
+          <ion-text color="danger">Project starting date is required</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label color="dark" position="floating">End Date </ion-label>
+          <ion-datetime display-format="DD-MM-YYYY" max= "2035" [min]="this.data.startdate" [(ngModel)]="data.enddate" #enddateCtrl="ngModel" name="enddate" required></ion-datetime>
+        </ion-item>
+        <div *ngIf="!enddateCtrl.valid && enddateCtrl.touched">
+          <ion-text color="danger">Project ending date is required</ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label color="dark" position="floating">Notes </ion-label>
+          <ion-textarea placeholder="Note (options)" type="string" [(ngModel)]="data.notes" #notesCtrl="ngModel" name="notes"></ion-textarea>
+        </ion-item>
+
+
+        <ion-button class="submit"color="danger" type="submit" [disabled]="!submitform.form.valid">
+          Submit
+       </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+
+</ion-content>
