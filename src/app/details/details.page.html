@@ -17,7 +17,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">Project Name</ion-label>
-          <ion-input minlength=2 type="string" [(ngModel)]="data.pname" #pnameCtrl="ngModel" name="pname" required></ion-input>
+          <ion-input minlength=2 type="string" [(ngModel)]="data.projectName" #pnameCtrl="ngModel" name="pname" required></ion-input>
         </ion-item>
         <div *ngIf="!pnameCtrl.valid && pnameCtrl.touched">
           <ion-text color="danger">Project Name is required</ion-text>
@@ -25,7 +25,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">Start Date </ion-label>
-          <ion-datetime display-format="DD-MM-YYYY" max= "2035"min="2000"[(ngModel)]="data.startdate" #startdateCtrl="ngModel" name="startdate" required></ion-datetime>
+          <ion-datetime display-format="DD-MM-YYYY" max= "2035"min="2000"[(ngModel)]="data.projectStartDate" #startdateCtrl="ngModel" name="startdate" required></ion-datetime>
         </ion-item>
         <div *ngIf="!startdateCtrl.valid && startdateCtrl.touched">
           <ion-text color="danger">Project starting date is required</ion-text>
@@ -33,7 +33,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">End Date </ion-label>
-          <ion-datetime display-format="DD-MM-YYYY" max= "2035" [min]="this.data.startdate" [(ngModel)]="data.enddate" #enddateCtrl="ngModel" name="enddate" required></ion-datetime>
+          <ion-datetime display-format="DD-MM-YYYY" max= "2035" [min]="this.data.projectStartDate" [(ngModel)]="data.projectEndDate" #enddateCtrl="ngModel" name="enddate" required></ion-datetime>
         </ion-item>
         <div *ngIf="!enddateCtrl.valid && enddateCtrl.touched">
           <ion-text color="danger">Project ending date is required</ion-text>
@@ -41,7 +41,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">Notes </ion-label>
-          <ion-textarea placeholder="Note (options)" type="string" [(ngModel)]="data.notes" #notesCtrl="ngModel" name="notes"></ion-textarea>
+          <ion-textarea placeholder="Note (optional)" type="string" [(ngModel)]="data.projectNotes" #notesCtrl="ngModel" name="notes"></ion-textarea>
         </ion-item>
 
 

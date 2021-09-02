@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +11,7 @@ import { ServiceService } from '../services/service.service';
 })
 export class DetailsPage implements OnInit {
   mydate = new Date().toISOString();
-  data = { pname: '', startdate: this.mydate, enddate: '', notes: '', tasks: 0, status: 0};
+  data = { id_project: 0 ,projectName: '', projectStartDate: '', projectEndDate: '', projectNotes: '', projectTasks: 0, projectStatus: 0};
 
   constructor(
     private service: ServiceService,
@@ -21,9 +22,9 @@ export class DetailsPage implements OnInit {
   }
 
   details(submitform: NgForm){
-    console.log(this.data.pname);
-    console.log(this.data.startdate);
-    console.log(this.data.enddate);
+    console.log(this.data.projectName);
+    console.log(this.data.projectStartDate);
+    console.log(this.data.projectEndDate);
     this.service.projectdetailget(this.data);
     this.router.navigate(['/home']);
     }

@@ -10,15 +10,16 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-card *ngIf="service.flag">
-    <ion-card-content>
-      <ion-card type="button" (click)="viewprojecttask()">
+  <ion-card  *ngIf="service.flag">
+    <ion-card-content *ngFor="let x of service.projects">
+      <ion-card type="button" (click)="service.viewprojecttask(x)">
         <div class="aligncard">
-        <ion-card-title class="ion-text-left"> <strong>{{ service.data.pname }}</strong>
-        <ion-checkbox class="checksize" [checked]="service.data.status"></ion-checkbox></ion-card-title>
-        <ion-card-subtitle class="ion-text-center">Start Date : {{ service.data.startdate | date}}</ion-card-subtitle>
-        <ion-card-subtitle class="ion-text-center">Due Date : {{ service.data.enddate | date}}</ion-card-subtitle>
-        <ion-text size= "small">Notes: {{ service.data.notes }}</ion-text>
+        <ion-card-title class="ion-text-left"> <strong>{{ x.projectName }}</strong>
+        <ion-checkbox class="checksize" [checked]="x.projectStatus"></ion-checkbox></ion-card-title>
+        <ion-card-subtitle class="ion-text-center">Start Date : {{ x.projectStartDate| date}}</ion-card-subtitle>
+        <ion-card-subtitle class="ion-text-center">Due Date : {{ x.projectEndDate| date}}</ion-card-subtitle>
+        <ion-text size= "small">Project Id: {{ x.id_project }}</ion-text><br>
+        <ion-text size= "small">Notes: {{ x.projectNotes }}</ion-text>
       </div>
     </ion-card>
     </ion-card-content>

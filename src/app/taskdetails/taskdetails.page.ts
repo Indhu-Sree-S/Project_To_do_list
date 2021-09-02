@@ -10,8 +10,7 @@ import { ServiceService } from '../services/service.service';
 })
 export class TaskdetailsPage implements OnInit {
   mydate = new Date().toISOString();
-  taskdata = { tname: '', tstartdate: '', tenddate: '', tnotes: '', tcomplexity: 'Low', status: 0};
-
+  taskdata = { taskName: '', taskStartDate: '', taskEndDate: '', taskNotes: '', taskComplexity: 1, taskStatus: 0};
   constructor(
     public service: ServiceService,
     private router: Router
@@ -22,6 +21,7 @@ export class TaskdetailsPage implements OnInit {
 
   taskdetails(submitform: NgForm){
     this.service.taskdetailget(this.taskdata);
+    this.service.sending_taskdata();
     this.router.navigate(['/displaytask']);
   }
   cancel(){

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../services/service.service';
 
@@ -7,7 +7,7 @@ import { ServiceService } from '../services/service.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
   data = { pname: '', startdate: '', enddate: '', notes: '', tasks: 0, status: 0};
   date = 'DD-MM-YYYY';
 
@@ -16,14 +16,13 @@ export class HomePage {
     public service: ServiceService,
     private router: Router
   ) {}
+  ngOnInit() {
+    this.service.getprojectdata();
+  }
 
   newproject(){
     this.router.navigate(['/details']);
   }
-  viewprojecttask(){
-    this.router.navigate(['/displaytask']);
-  }
-
 
 
 }

@@ -27,24 +27,12 @@ export class DisplaytaskPage implements OnInit{
   }
 
   checkbox(e){
-    if (e.currentTarget.checked) {
-      this.service.taskdata.tstatus = 1;
-      this.service.data.status = this.service.taskdata.tstatus;
-    }
+    console.log(e);
+    //if (e.currentTarget.checked) {
+      //this.service.taskdata.taskStatus = 1;
+      //this.service.data.projectStatus = this.service.taskdata.taskStatus;}
   }
 
-  complexity(){
-    if (this.service.taskdata.tcomplexity === 1) {
-      console.log(this.service.taskdata.tcomplexity);
-      return 'Low';
-    } else if (this.service.taskdata.tcomplexity === 2) {
-      console.log(this.service.taskdata.tcomplexity);
-      return 'Medium';
-    } else if (this.service.taskdata.tcomplexity === 3){
-      console.log(this.service.taskdata.tcomplexity);
-      return 'High';
-    }
-  }
 
 
 }

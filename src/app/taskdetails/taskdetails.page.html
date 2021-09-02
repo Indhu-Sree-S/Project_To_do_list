@@ -17,7 +17,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">Task Name</ion-label>
-          <ion-input minlength=2 type="string" [(ngModel)]="taskdata.tname" #tnameCtrl="ngModel" name="tname" required></ion-input>
+          <ion-input minlength=2 type="string" [(ngModel)]="taskdata.taskName" #tnameCtrl="ngModel" name="tname" required></ion-input>
         </ion-item>
         <div *ngIf="!tnameCtrl.valid && tnameCtrl.touched">
           <ion-text color="danger">Task Name is required</ion-text>
@@ -25,7 +25,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">Start Date </ion-label>
-          <ion-datetime display-format="DD-MM-YYYY" [max]="service.data.enddate"[min]="service.data.startdate"[(ngModel)]="taskdata.tstartdate" #tstartdateCtrl="ngModel" name="tstartdate" required></ion-datetime>
+          <ion-datetime display-format="DD-MM-YYYY" [max]="service.data.projectEndDate"[min]="service.data.projectStartDate"[(ngModel)]="taskdata.taskStartDate" #tstartdateCtrl="ngModel" name="tstartdate" required></ion-datetime>
         </ion-item>
         <div *ngIf="!tstartdateCtrl.valid && tstartdateCtrl.touched">
           <ion-text color="danger">Task starting date is required</ion-text>
@@ -33,7 +33,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">End Date </ion-label>
-          <ion-datetime display-format="DD-MM-YYYY" [max]= "service.data.enddate" [min]="this.taskdata.tstartdate" [(ngModel)]="taskdata.tenddate" #tenddateCtrl="ngModel" name="tenddate" required></ion-datetime>
+          <ion-datetime display-format="DD-MM-YYYY" [max]="service.data.projectEndDate" [min]="this.taskdata.taskStartDate" [(ngModel)]="taskdata.taskEndDate" #tenddateCtrl="ngModel" name="tenddate" required></ion-datetime>
         </ion-item>
         <div *ngIf="!tenddateCtrl.valid && tenddateCtrl.touched">
           <ion-text color="danger">Task ending date is required</ion-text>
@@ -41,7 +41,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">Complexity Level</ion-label>
-          <ion-select type="string"[(ngModel)]="taskdata.tcomplexity" #tcomplexityCtrl="ngModel" name="tcomplexity" required>
+          <ion-select type="string"[(ngModel)]="taskdata.taskComplexity" #tcomplexityCtrl="ngModel" name="tcomplexity" required>
             <ion-select-option value= "Low">Low</ion-select-option>
             <ion-select-option value= "Medium">Medium</ion-select-option>
             <ion-select-option value= "High">High</ion-select-option>
@@ -53,7 +53,7 @@
 
         <ion-item>
           <ion-label color="dark" position="floating">Notes </ion-label>
-          <ion-textarea placeholder="Note (options)" type="string" [(ngModel)]="taskdata.tnotes" #tnotesCtrl="ngModel" name="tnotes"></ion-textarea>
+          <ion-textarea placeholder="Note (optional)" type="string" [(ngModel)]="taskdata.taskNotes" #tnotesCtrl="ngModel" name="tnotes"></ion-textarea>
         </ion-item>
 
 
